@@ -15,10 +15,10 @@ npm install pui-react-buttons --save
 Require the subcomponents:
 
 ```
-var DefaultButton = require('pui-react-buttons').DefaultButton;
-var PrimaryButton = require('pui-react-buttons').PrimaryButton;
-var DangerButton = require('pui-react-buttons').DangerButton;
-var BrandButton = require('pui-react-buttons').Brand;
+const {DefaultButton} = require('pui-react-buttons');
+const {PrimaryButton} = require('pui-react-buttons');
+const {DangerButton} = require('pui-react-buttons');
+const {BrandButton} = require('pui-react-buttons');
 ```
 
 
@@ -59,7 +59,6 @@ There are 3 main button color schemes: Default, Primary, Danger. There is also B
 For each color scheme there is the default style, an alt style (with inverted colors and a transparent background) and a flat style (alt with transparent borders).
 To use the alt style, set the `alt` prop, to use the flat style, use the `flat` prop
 
-
 ```react_example_table
 <DefaultButton alt>
   Alt
@@ -73,7 +72,6 @@ To use the alt style, set the `alt` prop, to use the flat style, use the `flat` 
   Primary Alt
 </PrimaryButton>
 ```
-
 
 ## Sizing
 

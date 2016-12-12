@@ -4,8 +4,8 @@
 title: Dividers
 name: divider_react
 categories:
- - react_base_dividers
- - react_all
+- react_base_dividers
+- react_all
 ---
 
 <code class="pam">
@@ -16,10 +16,9 @@ npm install pui-react-dividers --save
 Require the subcomponents:
 
 ```
-var Divider = require('pui-react-dividers').Divider;
-var InverseDivider = require('pui-react-dividers').InverseDivider;
+const {Divider} = require('pui-react-dividers');
+const {InverseDivider} = require('pui-react-dividers');
 ```
-
 
 Dividers draw horizontal lines between different content groupings.
 
@@ -40,7 +39,7 @@ On a dark background, use these inverse dividers
 
 <div className="type-dark-11">
   Here's some stuff above the divider
-  <InverseDivider size='large' />
+  <InverseDivider size="large" />
   Here's some stuff below the divider
 </div>
 ```

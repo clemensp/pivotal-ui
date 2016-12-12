@@ -25,10 +25,10 @@ npm install babel-loader svg-react-loader --save-dev
 Require the subcomponents:
 
 ```
-import {SuccessAlert} from 'pui-react-alerts');
-import {InfoAlert} from 'pui-react-alerts');
-import {WarningAlert} from 'pui-react-alerts');
-import {ErrorAlert} from 'pui-react-alerts');
+var {SuccessAlert} = require('pui-react-alerts');
+var {InfoAlert} = require('pui-react-alerts');
+var {WarningAlert} = require('pui-react-alerts');
+var {ErrorAlert} = require('pui-react-alerts');
 ```
 
 

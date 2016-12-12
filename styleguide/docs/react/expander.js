@@ -3,8 +3,8 @@
 title: Expander
 name: expander_react
 categories:
- - react_components_expander
- - react_all
+- react_components_expander
+- react_all
 ---
 
 
@@ -16,7 +16,7 @@ npm install pui-react-expander --save
 Require the subcomponent:
 
 ```
-var ExpanderContent = require('pui-react-expander').ExpanderContent;
+const {ExpanderContent} = require('pui-react-expander');
 ```
 
 Expanders are collapsible content areas. Unlike their accordion counterparts, Expanders do not require a
@@ -40,15 +40,14 @@ const MoreInfo = React.createClass({
   render: function() {
     return (
       <main>
-        <ExpanderContent
-          expanded={this.state.expanded}
-          onEntered={() => {console.log('onEntered')}}
-          onExited={() => {console.log('onExited')}}>
-            <p className='h1 bg-neutral-2 type-neutral-9'>
-              Content in expander
-            </p>
+        <ExpanderContent expanded={this.state.expanded}
+                         onEntered={() => console.log('onEntered')}
+                         onExited={() => console.log('onExited')}>
+          <p className="h1 bg-neutral-2 type-neutral-9">
+            Content in expander
+          </p>
         </ExpanderContent>
-        <button className='btn-primary' onClick={this.toggleContent}>
+        <button className="btn-primary" onClick={this.toggleContent}>
           Toggle Content
         </button>
       </main>

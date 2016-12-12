@@ -18,18 +18,17 @@ npm install babel-loader svg-react-loader --save-dev
 Require the subcomponents:
 
 ```
-var DraggableList = require('pui-react-draggable-list').DraggableList;
-var DraggableListItem = require('pui-react-draggable-list').DraggableListItem;
+const {DraggableList} = require('pui-react-draggable-list');
+const {DraggableListItem} = require('pui-react-draggable-list');
 ```
+
 Creates a draggable list.
 
 The property `onDragEnd` is a callback when a drag event has completed. Use this
 if you need to make an API call to update the order of some elements.
 
 ```jsx_example
-var dragEndCallback = function(data) {
-  alert('New item indices order: ' + data);
-};
+const dragEndCallback = data => alert('New item indices order: ' + data);
 ```
 
 ```react_example

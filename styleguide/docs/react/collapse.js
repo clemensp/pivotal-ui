@@ -20,11 +20,10 @@ npm install babel-loader svg-react-loader --save-dev
 Require the subcomponents:
 
 ```
-var BaseCollapse = require('pui-react-collapse').BaseCollapse;
-var AltCollapse = require('pui-react-collapse').AltCollapse;
-var Collapse = require('pui-react-collapse').Collapse;
+const {BaseCollapse} = require('pui-react-collapse');
+const {AltCollapse} = require('pui-react-collapse');
+const {Collapse} = require('pui-react-collapse');
 ```
-
 
 Collapse components are implementations of the [Accordion][accordion] style. In
 all `Collapse` component variations, the `header` prop describes the text
