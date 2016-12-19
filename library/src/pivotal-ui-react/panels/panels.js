@@ -1,8 +1,9 @@
-const React = require('react');
-const types = React.PropTypes;
-const classnames = require('classnames');
+import React from 'react';
+import classnames from 'classnames';
 import {mergeProps} from 'pui-react-helpers';
-require('pui-css-panels');
+import 'pui-css-panels';
+
+const types = React.PropTypes;
 
 const paddingTypes = [];
 ['p', 'm'].forEach(type => {
@@ -47,12 +48,10 @@ class PanelHeader extends React.Component {
 
       const actionsNode = actions ? <div className="panel-actions">{actions}</div> : null;
 
-      return (
-        <div className="panel-header">
-          {headerNode}
-          {actionsNode}
-        </div>
-      );
+      return <div className="panel-header">
+        {headerNode}
+        {actionsNode}
+      </div>;
     } else {
       return null;
     }
@@ -68,11 +67,9 @@ class PanelFooter extends React.Component {
     const {footer} = this.props;
 
     if (footer) {
-      return (
-        <div className="panel-footer">
-          {footer}
-        </div>
-      );
+      return <div className="panel-footer">
+        {footer}
+      </div>;
     } else {
       return null;
     }
@@ -86,7 +83,7 @@ class Panel extends React.Component {
     actions: types.node,
     subtitle: types.node,
     innerClassName: types.string,
-    padding: function(props, propName, componentName) {
+    padding: (props, propName, componentName) => {
       if (props.padding && !props.padding.split(' ').every(pad => paddingTypes.indexOf(pad) >= 0)) {
         return new Error(`Invalid padding type used in ${componentName}`);
       }
@@ -109,13 +106,11 @@ class Panel extends React.Component {
       style: scrollableStyle
     };
 
-    return (
-      <div {...props}>
-        <PanelHeader {...{actions, header, subtitle}}/>
-        <div {...bodyProps}>{children}</div>
-        <PanelFooter footer={footer}/>
-      </div>
-    );
+    return <div {...props}>
+      <PanelHeader {...{actions, header, subtitle}}/>
+      <div {...bodyProps}>{children}</div>
+      <PanelFooter footer={footer}/>
+    </div>;
   }
 }
 
@@ -150,7 +145,6 @@ class BasicPanelAlt extends Panel {
 class ClickablePanel extends Panel {
   kind = 'panel-clickable';
 }
-
 
 class ClickableAltPanel extends Panel {
   kind = 'panel-clickable-alt';

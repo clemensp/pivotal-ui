@@ -6,9 +6,7 @@ module.exports = function Animation(ParentClass) {
       if (super.componentWillUnmount) super.componentWillUnmount();
       this::AnimationMixin.componentWillUnmount();
     }
-
-    shouldAnimate = AnimationMixin.shouldAnimate;
-
+    
     animate = AnimationMixin.animate;
   };
 };

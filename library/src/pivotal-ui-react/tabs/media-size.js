@@ -1,5 +1,5 @@
 module.exports = {
-  matches(screenSizeString) {
+  matches: screenSizeString => {
     const screenSizes = {
       xs: 0,
       sm: 768,

@@ -3,11 +3,9 @@ function isFirefox() {
 }
 
 module.exports = {
-  getScrollTop: function() {
-    return isFirefox() ? document.documentElement.scrollTop : document.body.scrollTop;
-  },
+  getScrollTop: () => isFirefox() ? document.documentElement.scrollTop : document.body.scrollTop,
 
-  setScrollTop: function(value) {
+  setScrollTop: value => {
     document.body.scrollTop = value;
     document.documentElement.scrollTop = value;
   }

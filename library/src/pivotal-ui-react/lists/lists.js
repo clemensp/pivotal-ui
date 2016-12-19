@@ -1,7 +1,8 @@
-var React = require('react');
+import React from 'react';
 import classnames from 'classnames';
+import 'pui-css-lists';
+
 const types = React.PropTypes;
-require('pui-css-lists');
 
 class ListItem extends React.Component {
   render() {
@@ -19,21 +20,21 @@ function defList(tagName, spacingType, classNames, childClassNames) {
     };
 
     render() {
-      var {className, spacing, children, unstyled, divider, ...others} = this.props;
-      var classes = classnames(classNames(this.props), className, spacing && `${spacingType}${spacing}`);
+      let {className, spacing, children, unstyled, divider, ...others} = this.props;
+      const classes = classnames(classNames(this.props), className, spacing && `${spacingType}${spacing}`);
       if (childClassNames) {
         children = React.Children.map(children, child => React.cloneElement(child, {className: childClassNames}));
       }
       return (
         tagName === 'ul' ? <ul className={classes} {...others}>{children}</ul> :
-        tagName === 'ol' ? <ol className={classes} {...others}>{children}</ol> :
-        null
+          tagName === 'ol' ? <ol className={classes} {...others}>{children}</ol> :
+            null
       );
     }
   };
 }
 
-var UnorderedList = defList(
+const UnorderedList = defList(
   'ul', 'lv',
   ({unstyled}) => classnames({
     'list-unordered': !unstyled,
@@ -41,17 +42,17 @@ var UnorderedList = defList(
   })
 );
 
-var OrderedList = defList('ol', 'lv', ({unstyled}) => classnames({'list-unstyled': unstyled}));
+const OrderedList = defList('ol', 'lv', ({unstyled}) => classnames({'list-unstyled': unstyled}));
 
-var InlineList = defList('ul', 'lh', ({divider}) => classnames('list-inline', {'list-inline-divider': divider}));
+const InlineList = defList('ul', 'lh', ({divider}) => classnames('list-inline', {'list-inline-divider': divider}));
 
-var GroupList = defList('ul', 'lv', () => classnames('list-group'), 'list-group-item');
+const GroupList = defList('ul', 'lv', () => classnames('list-group'), 'list-group-item');
 
-var GroupListInverse = defList('ul', 'lv', () => classnames('list-group-inverse'), 'list-group-item');
+const GroupListInverse = defList('ul', 'lv', () => classnames('list-group-inverse'), 'list-group-item');
 
-var StepList = defList('ol', 'lh', () => classnames('list-steps'));
+const StepList = defList('ol', 'lh', () => classnames('list-steps'));
 
-var BreadcrumbList = defList('ul', 'lh', () => classnames('list-breadcrumb'));
+const BreadcrumbList = defList('ul', 'lh', () => classnames('list-breadcrumb'));
 
 module.exports = {
   ListItem,

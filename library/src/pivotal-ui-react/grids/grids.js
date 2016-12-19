@@ -1,9 +1,9 @@
-const classnames = require('classnames');
-const React = require('react');
-const types = React.PropTypes;
-const {mergeProps} = require('pui-react-helpers');
+import classnames from 'classnames';
+import React from 'react';
+import {mergeProps} from 'pui-react-helpers';
+import 'pui-css-grids';
 
-require('pui-css-grids');
+const types = React.PropTypes;
 
 class Row extends React.Component{
   static propTypes = {
@@ -22,7 +22,7 @@ class Row extends React.Component{
       'row-gutter-sm': gutter === 'sm'
     };
     const props = mergeProps(other, {className: classnames('row', gutterClass)});
-    return (<Component {...props}/>);
+    return <Component {...props}/>;
   }
 }
 
@@ -105,7 +105,7 @@ class Col extends React.Component {
       className: classnames(sizeClassName, hiddenClassName, offsetClassName, pushClassName, pullClassName)
     });
 
-    return (<Component {...props}/>);
+    return <Component {...props}/>;
   }
 }
 

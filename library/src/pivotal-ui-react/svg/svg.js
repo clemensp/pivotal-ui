@@ -1,8 +1,8 @@
-const React = require('react');
+import React from 'react';
 
 const types = React.PropTypes;
 
-class Svg extends React.Component  {
+class Svg extends React.Component {
   static propTypes = {
     src: types.string.isRequired
   };
@@ -17,10 +17,10 @@ class Svg extends React.Component  {
     this.setState({Component: this.svgPathLoader(src)});
   }
 
-  svgPathLoader(src) {
+  svgPathLoader = src => {
     try {
       return require(`!!babel!svg-react!../../app/svg/${src}.svg`);
-    } catch(e) {
+    } catch (e) {
     }
   }
 
@@ -28,7 +28,7 @@ class Svg extends React.Component  {
     const {src, ...props} = this.props;
     const {Component} = this.state;
     if (Component) return <Component {...props}/>;
-    return (<svg {...props}/>);
+    return <svg {...props}/>;
   }
 }
 

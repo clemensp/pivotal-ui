@@ -1,7 +1,7 @@
 import React from 'react';
 const types = React.PropTypes;
 
-module.exports = function Transition(Parent) {
+module.exports = Parent => {
   return class Transition extends Parent {
     static propTypes = {
       onEntered: types.func,

@@ -1,7 +1,7 @@
-const {mergeProps} = require('pui-react-helpers');
-const React = require('react');
-const {Svg} = require('pui-react-svg');
-require('pui-css-iconography');
+import {mergeProps} from 'pui-react-helpers';
+import React from 'react';
+import {Svg} from 'pui-react-svg';
+import 'pui-css-iconography';
 
 const types = React.PropTypes;
 
@@ -28,11 +28,9 @@ class Icon extends React.Component {
     const {src, style, verticalAlign, ...others} = this.props;
 
     const props = mergeProps(others, {className: `svgicon svg-${verticalAlign}`});
-    return (
-      <span {...props}>
-        <SvgIcon {...{src, style, className: `icon-${src}`, key: src}}/>
-      </span>
-    );
+    return <span {...props}>
+      <SvgIcon {...{src, style, className: `icon-${src}`, key: src}}/>
+    </span>;
   }
 }
 

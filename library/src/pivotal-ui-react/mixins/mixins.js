@@ -1,4 +1,4 @@
-module.exports = function mixin(ParentClass) {
+module.exports = ParentClass => {
   return {
     with(...classGenerators) {
       return classGenerators.reduceRight((ParentClass, classGenerator) => classGenerator(ParentClass), ParentClass);

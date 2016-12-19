@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react';
 import {mergeProps} from 'pui-react-helpers';
-require('pui-css-labels');
+import 'pui-css-labels';
 
 class Label extends React.Component {
   render() {

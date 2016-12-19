@@ -1,7 +1,8 @@
-var React = require('react');
-var types = React.PropTypes;
+import React from 'react';
 import {mergeProps} from 'pui-react-helpers';
-require('pui-css-panes');
+import 'pui-css-panes';
+
+const types = React.PropTypes;
 
 class BasePane extends React.Component {
   static propTypes = {
@@ -10,14 +11,13 @@ class BasePane extends React.Component {
   };
 
   render() {
-    var {innerClassName, children, ...other} = this.props;
+    const {innerClassName, children, ...other} = this.props;
     const outerProps = mergeProps(other, {className: 'pane'});
     const innerProps = mergeProps({className: innerClassName}, {className: 'container'});
-    return (
-      <div {...outerProps} >
-        <div {...innerProps}>{children}</div>
-      </div>
-    );
+
+    return <div {...outerProps} >
+      <div {...innerProps}>{children}</div>
+    </div>;
   }
 }
 
@@ -27,7 +27,7 @@ class Pane extends React.Component {
   };
 
   render() {
-    var {className, ...other} = this.props;
+    const {className, ...other} = this.props;
     return <BasePane {...other} className={className}/>;
   }
 }

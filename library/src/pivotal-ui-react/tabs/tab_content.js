@@ -1,5 +1,5 @@
-const classnames = require('classnames');
-const React = require('react');
+import classnames from 'classnames';
+import React from 'react';
 
 const types = React.PropTypes;
 

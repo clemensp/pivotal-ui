@@ -1,6 +1,7 @@
-var classnames = require('classnames');
-var React = require('react');
-var types = React.PropTypes;
+import classnames from 'classnames';
+import React from 'react';
+
+const types = React.PropTypes;
 
 function onClick(value, e) {
   e.preventDefault();
@@ -27,11 +28,12 @@ class AutocompleteList extends React.Component {
     var {className} = this.props;
     var suggestedValues = this.props.$autocomplete.get('suggestedValues');
     var suggestions = suggestedValues.map((suggestion, key) => {
-      const value = '_key_' in suggestion ?  suggestion._key_: suggestion.value;
+      const value = '_key_' in suggestion ? suggestion._key_ : suggestion.value;
       var className = classnames('autocomplete-item', {highlighted: key === this.props.$autocomplete.get('highlightedSuggestion')}, {selected: value === this.props.selectedSuggestion});
       return (
         <li key={key}>
-          <a href="#" onClick={onClick.bind(this, suggestion)} role="button" title={value} className={className}>{value}</a>
+          <a href="#" onClick={onClick.bind(this, suggestion)} role="button" title={value}
+             className={className}>{value}</a>
         </li>
       );
     });
@@ -47,12 +49,19 @@ class AutocompleteList extends React.Component {
   }
 
   render() {
-    var {children, $autocomplete, ...props} = this.props;
+    const {children, $autocomplete, ...props} = this.props;
     if (!$autocomplete) return null;
     if (!children) return this.renderDefault();
-    var {hidden, value, highlightedSuggestion, suggestedValues} = $autocomplete.get();
+    const {hidden, value, highlightedSuggestion, suggestedValues} = $autocomplete.get();
     if (hidden) return null;
-    return (<div>{React.Children.map(children, e => React.cloneElement(e, {value, suggestedValues, highlightedSuggestion, onClick, ...props}))}</div>);
+    return <div>
+      {React.Children.map(children, e => React.cloneElement(e, {
+        value,
+        suggestedValues,
+        highlightedSuggestion,
+        onClick, ...props
+      }))}
+    </div>;
   }
 }
 

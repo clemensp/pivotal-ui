@@ -1,17 +1,14 @@
-const raf = require('raf');
-const React = require('react');
-const ReactDOM = require('react-dom');
-const shallowEqual = require('fbjs/lib/shallowEqual');
+import raf from 'raf';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import shallowEqual from 'fbjs/lib/shallowEqual';
 import mixin from '../mixins';
-const Mounted = require('../mixins/mounted_mixin');
-const ShallowCompare = require('../mixins/shallow_compare_mixin');
+import Mounted from '../mixins/mounted_mixin';
+import ShallowCompare from '../mixins/shallow_compare_mixin';
+
 const Component = mixin(React.Component).with(ShallowCompare);
 
-const rafify = function rafify(callback) {
-  return function(...args) {
-    raf(() => callback.call(this, ...args));
-  };
-};
+const rafify = callback => (...args) => raf(() => callback.call(this, ...args));
 
 const privates = new WeakMap();
 
@@ -68,9 +65,7 @@ module.exports = {
         const {resize} = privates.get(this) || {};
         const boundingClientRect = this.getBoundingClientRect();
         privates.set(this, {boundingClientRect, resize});
-        return (
-          <Klass {...this.props} {...this.state} {...{boundingClientRect}} ref={ref => this.component = ref}/>
-        );
+        return <Klass {...this.props} {...this.state} {...{boundingClientRect}} ref={ref => this.component = ref}/>;
       }
     };
   }

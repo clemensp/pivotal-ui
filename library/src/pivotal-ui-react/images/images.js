@@ -1,7 +1,8 @@
-var React = require('react');
-var types = React.PropTypes;
+import React from 'react';
 import {mergeProps} from 'pui-react-helpers';
-require('pui-css-images');
+import 'pui-css-images';
+
+const types = React.PropTypes;
 
 class Image extends React.Component {
   static propTypes = {

@@ -1,4 +1,5 @@
-const React = require('react');
+import React from 'react';
+
 const types = React.PropTypes;
 
 class Tab extends React.Component {

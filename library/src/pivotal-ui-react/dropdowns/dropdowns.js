@@ -1,16 +1,14 @@
 import React from 'react';
 import classnames from 'classnames';
-
 import mixin from 'pui-react-mixins';
 import Scrim from 'pui-react-mixins/mixins/scrim_mixin';
 import Transition from 'pui-react-mixins/mixins/transition_mixin';
-
-const {Icon} = require('pui-react-iconography');
-require('pui-css-dropdowns');
+import {Icon} from 'pui-react-iconography';
+import 'pui-css-dropdowns';
 
 const types = React.PropTypes;
 
-function defaultToggleNode(dropCaret) {
+const defaultToggleNode = dropCaret => {
   if (dropCaret) return <Icon src="chevron_down"/>;
 }
 
@@ -51,9 +49,7 @@ class Dropdown extends mixin(React.Component).with(Scrim, Transition) {
     this.props.onClick && this.props.onClick(event);
   };
 
-  scrimClick = () => {
-    this.setState({open: false});
-  };
+  scrimClick = () => this.setState({open: false});
 
   menuClick = () => {
     if (!this.props.closeOnMenuClick) return;
@@ -61,8 +57,10 @@ class Dropdown extends mixin(React.Component).with(Scrim, Transition) {
   };
 
   render() {
-    const {border, buttonClassName, children, className, closeOnMenuClick, disableScrim, dropCaret,
-      flat, link, pullRight, onClick, onEntered, onExited, split, title, toggle, menuCaret, ...props} = this.props;
+    const {
+      border, buttonClassName, children, className, closeOnMenuClick, disableScrim, dropCaret,
+      flat, link, pullRight, onClick, onEntered, onExited, split, title, toggle, menuCaret, ...props
+    } = this.props;
     const {open} = this.state;
 
     let dropdownLabel, dropdownToggle, toggleNode;
@@ -89,13 +87,13 @@ class Dropdown extends mixin(React.Component).with(Scrim, Transition) {
         'dropdown-menu-caret': menuCaret
       }
     );
-    return (
-      <div className={dropdownClasses} {...props}>
-          {dropdownLabel}
-          {dropdownToggle}
-        <div className={dropdownMenuClasses}><ul onClick={this.menuClick}>{children}</ul></div>
+    return <div className={dropdownClasses} {...props}>
+      {dropdownLabel}
+      {dropdownToggle}
+      <div className={dropdownMenuClasses}>
+        <ul onClick={this.menuClick}>{children}</ul>
       </div>
-    );
+    </div>;
   };
 }
 
@@ -111,7 +109,7 @@ class DropdownItem extends React.Component {
     onSelect: types.func
   };
 
-  handleClick = (event) => {
+  handleClick = event => {
     const {href, disabled, onSelect, eventKey} = this.props;
 
     if (!href || disabled) {
@@ -140,11 +138,9 @@ class DropdownItem extends React.Component {
 
     const disabledClass = disabled ? 'disabled' : '';
     const dropdownItemClass = classnames(className, disabledClass);
-    return (
-      <li {...{style}} className={dropdownItemClass} onClick={href ? '' : this.handleClick}>
-        {anchor}
-      </li>
-    );
+    return <li {...{style}} className={dropdownItemClass} onClick={href ? '' : this.handleClick}>
+      {anchor}
+    </li>;
   }
 }
 

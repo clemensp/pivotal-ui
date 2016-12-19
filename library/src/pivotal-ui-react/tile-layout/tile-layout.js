@@ -1,9 +1,9 @@
-const React = require('react');
-const classnames = require('classnames');
+import React from 'react';
+import classnames from 'classnames';
 import {mergeProps} from 'pui-react-helpers';
-require('pui-css-tile-layout');
+import 'pui-css-tile-layout';
 
-var types = React.PropTypes;
+const types = React.PropTypes;
 
 class TileLayout extends React.Component {
   static propTypes = {
@@ -14,7 +14,7 @@ class TileLayout extends React.Component {
     noGutter: types.bool
   };
 
-  getColumnClasses(columns) {
+  getColumnClasses = columns => {
     if (columns instanceof Object) {
       const classes = [];
 
@@ -39,19 +39,15 @@ class TileLayout extends React.Component {
       'tile-layout'
     );
     const props = mergeProps({className: classes}, others);
-    return (
-      <div {...props}>
-        {children}
-      </div>
-    );
+    return <div {...props}>
+      {children}
+    </div>;
   }
 }
 
 class TileLayoutItem extends React.Component {
   render() {
-    return (
-      <div {...mergeProps({className: 'tile-item'}, this.props)}/>
-    );
+    return <div {...mergeProps({className: 'tile-item'}, this.props)}/>;
   }
 }
 

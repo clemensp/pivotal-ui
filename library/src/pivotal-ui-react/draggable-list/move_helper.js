@@ -1,4 +1,4 @@
-module.exports = function(collection, startIndex, endIndex) {
+module.exports = (collection, startIndex, endIndex) => {
   while (startIndex < 0) {
     startIndex += collection.length;
   }
@@ -6,7 +6,7 @@ module.exports = function(collection, startIndex, endIndex) {
     endIndex += collection.length;
   }
   if (endIndex >= collection.length) {
-    var k = endIndex - collection.length;
+    let k = endIndex - collection.length;
     while ((k--) + 1) {
       collection.push(undefined);
     }

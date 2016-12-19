@@ -1,8 +1,8 @@
-var React = require('react');
+import React from 'react';
 import {mergeProps} from 'pui-react-helpers';
-require('pui-css-buttons');
+import 'pui-css-buttons';
 
-class UIButton extends React.Component{
+class UIButton extends React.Component {
   static propTypes = {
     alt: React.PropTypes.bool,
     flat: React.PropTypes.bool,
@@ -24,19 +24,19 @@ class UIButton extends React.Component{
   render() {
     const {alt, flat, large, small, kind, children, ...others} = this.props;
 
-    let defaultProps = {
+    const defaultProps = {
       className: [
-          {
-            'button': this.props.href,
-            [`btn-${kind}-alt`]: alt,
-            [`btn-${kind}-flat`]: flat,
-            [`btn-${kind}`]: !alt && !flat,
-            'btn-lg': large,
-            'btn-sm': small
-          }
+        {
+          'button': this.props.href,
+          [`btn-${kind}-alt`]: alt,
+          [`btn-${kind}-flat`]: flat,
+          [`btn-${kind}`]: !alt && !flat,
+          'btn-lg': large,
+          'btn-sm': small
+        }
       ]
     };
-    let props = mergeProps(others, defaultProps);
+    const props = mergeProps(others, defaultProps);
 
     return this.props.href ?
       <a {...props}>{children}</a> :
@@ -44,7 +44,7 @@ class UIButton extends React.Component{
   }
 }
 
-function defButton(propOverrides) {
+const defButton = propOverrides => {
   return class extends React.Component {
     static propTypes = {
       alt: React.PropTypes.bool,

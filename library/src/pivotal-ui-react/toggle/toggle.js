@@ -1,7 +1,8 @@
-const React = require('react');
+import React from 'react';
 import uniqueid from 'lodash.uniqueid';
 import {mergeProps} from 'pui-react-helpers';
-require('pui-css-forms');
+import 'pui-css-forms';
+
 const types = React.PropTypes;
 
 class Toggle extends React.Component {
@@ -28,12 +29,10 @@ class Toggle extends React.Component {
       }
     );
 
-    return (
-      <div className='form-group'>
-        <input {...inputProps}/>
-        <label htmlFor={toggleId} className={size}>{children}</label>
-      </div>
-    );
+    return <div className='form-group'>
+      <input {...inputProps}/>
+      <label htmlFor={toggleId} className={size}>{children}</label>
+    </div>;
   }
 }
 

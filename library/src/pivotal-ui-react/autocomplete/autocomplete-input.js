@@ -1,7 +1,7 @@
-var classnames = require('classnames');
-var React = require('react');
+import classnames from 'classnames';
+import React from 'react';
 
-var types = React.PropTypes;
+const types = React.PropTypes;
 
 const DOWN_KEY = 40;
 const ENTER_KEY = 13;
@@ -35,14 +35,14 @@ class AutocompleteInput extends React.Component {
   static TAB_KEY = TAB_KEY;
   static UP_KEY = UP_KEY;
 
-  change = (e) => {
+  change = e => {
     var {value} = e.currentTarget;
     this.props.onSearch(value, (suggestedValues) => {
       this.props.$autocomplete.merge({hidden: false, highlightedSuggestion: 0, value, suggestedValues}).flush();
     });
   };
 
-  keyDown = (e) => {
+  keyDown = e => {
     var {keyCode} = e;
     var {highlightedSuggestion, suggestedValues} = this.props.$autocomplete.get();
     var {onPicking = () => suggestedValues} = this.props;
@@ -57,7 +57,10 @@ class AutocompleteInput extends React.Component {
     const keyCodes = {
       [DOWN_KEY]: () => {
         var selectableSuggestions = onPicking(suggestedValues);
-        this.props.$autocomplete.merge({hidden: false, highlightedSuggestion: Math.min(highlightedSuggestion + 1, selectableSuggestions.length - 1)});
+        this.props.$autocomplete.merge({
+          hidden: false,
+          highlightedSuggestion: Math.min(highlightedSuggestion + 1, selectableSuggestions.length - 1)
+        });
         this.props.scrollIntoView();
       },
 
@@ -74,25 +77,27 @@ class AutocompleteInput extends React.Component {
         this.props.$autocomplete.merge({highlightedSuggestion: -1, hidden: true});
       },
 
-      noop: () => {}
+      noop: () => {
+      }
     };
 
     keyCodes[keyCode in keyCodes ? keyCode : 'noop']();
   };
 
   renderDefault(props) {
-    return (<input {...props} className={classnames('autocomplete-input', 'form-control', props.className)} type="search" value={props.value} aria-label={props.placeholder}/>);
+    return <input {...props} className={classnames('autocomplete-input', 'form-control', props.className)} type="search"
+                             value={props.value} aria-label={props.placeholder}/>;
   }
 
   render() {
-    var {autoFocus, children, $autocomplete, onPick, onPicking, onSearch, scrollIntoView, ...props} = this.props;
+    let {autoFocus, children, $autocomplete, onPick, onPicking, onSearch, scrollIntoView, ...props} = this.props;
     if (!$autocomplete) return null;
-    var {value} = $autocomplete.get();
-    var otherProps = {autoFocus, value, onChange: this.change, onKeyDown: this.keyDown};
+    const {value} = $autocomplete.get();
+    const otherProps = {autoFocus, value, onChange: this.change, onKeyDown: this.keyDown};
     props = {...props, ...otherProps};
     if (!children) return this.renderDefault(props);
     children = React.Children.map(children, e => React.cloneElement(e, props));
-    return (<div>{children}</div>);
+    return <div>{children}</div>;
   }
 }
 

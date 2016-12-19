@@ -1,13 +1,13 @@
-const React = require('react');
-const {DefaultButton} = require('pui-react-buttons');
-const {mergeProps} = require('pui-react-helpers');
-const {Icon} = require('pui-react-iconography');
-const mixin = require('pui-react-mixins');
-const Scrim = require('pui-react-mixins/mixins/scrim_mixin');
-const Transition = require('pui-react-mixins/mixins/transition_mixin');
-const classnames = require('classnames');
+import React from 'react';
+import {DefaultButton} from 'pui-react-buttons';
+import {mergeProps} from 'pui-react-helpers';
+import {Icon} from 'pui-react-iconography';
+import mixin from 'pui-react-mixins';
+import Scrim from 'pui-react-mixins/mixins/scrim_mixin';
+import Transition from 'pui-react-mixins/mixins/transition_mixin';
+import classnames from 'classnames';
 
-require('pui-css-select');
+import 'pui-css-select';
 
 const types = React.PropTypes;
 
@@ -37,9 +37,10 @@ class Select extends mixin(React.Component).with(Scrim, Transition) {
 
   toggle = () => this.setState({open: !this.state.open});
 
-  select = value => () => {
-    this.setState({open: false, uncontrolledValue: value}, this.props.onChange && this.props.onChange(value));
-  };
+  select = value => () => this.setState({
+    open: false,
+    uncontrolledValue: value
+  }, this.props.onChange && this.props.onChange(value));
 
   scrimClick = () => this.setState({open: false});
 
@@ -49,11 +50,12 @@ class Select extends mixin(React.Component).with(Scrim, Transition) {
     const toggleValue = isBlank(controlledValue) ? uncontrolledValue : controlledValue;
 
     const {toggleLabel, selectOptions} = options.reduce((memo, option) => {
-      const {value, label} = typeof option === 'object' ? option: {value: option, label: option};
+      const {value, label} = typeof option === 'object' ? option : {value: option, label: option};
       const selected = value === toggleValue;
       if (selected) memo.toggleLabel = label;
       const className = classnames({selected: value === toggleValue});
-      memo.selectOptions.push(<li {...{className, key: value}}><a className="option" role="button" onClick={this.select(value)}>{label}</a></li>);
+      memo.selectOptions.push(<li {...{className, key: value}}><a className="option" role="button"
+                                                                  onClick={this.select(value)}>{label}</a></li>);
       return memo;
     }, {toggleLabel: toggleValue, selectOptions: []});
     const list = <ul>{selectOptions}</ul>;

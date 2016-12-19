@@ -1,17 +1,16 @@
 import React from 'react';
 import uniqueid from 'lodash.uniqueid';
 import TetherComponent from 'react-tether';
-
 import mixin from 'pui-react-mixins';
 import Scrim from 'pui-react-mixins/mixins/scrim_mixin';
 
 const types = React.PropTypes;
 
 const TETHER_PLACEMENTS = {
-  top:    'bottom center',
+  top: 'bottom center',
   bottom: 'top center',
-  left:   'middle right',
-  right:  'middle left'
+  left: 'middle right',
+  right: 'middle left'
 };
 
 const privates = new WeakMap();
@@ -59,11 +58,11 @@ class OverlayTrigger extends mixin(React.Component).with(Scrim) {
   }
 
   componentWillUnmount() {
-    if(super.componentWillUnmount) super.componentWillUnmount();
+    if (super.componentWillUnmount) super.componentWillUnmount();
     clearTimeout(privates.get(this).timeout);
   }
 
-  triggerShow = (eventType) => {
+  triggerShow = eventType => {
     return (...args) => {
       this.show();
       const userCallback = this.props.children.props[eventType];
@@ -71,7 +70,7 @@ class OverlayTrigger extends mixin(React.Component).with(Scrim) {
     };
   };
 
-  triggerHide = (eventType) => {
+  triggerHide = eventType => {
     return (...args) => {
       this.hide();
       const userCallback = this.props.children.props[eventType];
@@ -79,21 +78,19 @@ class OverlayTrigger extends mixin(React.Component).with(Scrim) {
     };
   };
 
-  getDelay = (display) => {
+  getDelay = display => {
     const {delay, delayHide, delayShow} = this.props;
     if (display && delayShow) return delayShow;
     if (!display && delayHide) return delayHide;
     return delay;
   };
 
-  scrimClick = () => {
-    this.hide();
-  };
+  scrimClick = () => this.hide();
 
   setDisplay = (display) => {
     const oldTimeout = privates.get(this).timeout;
 
-    if(display === this.state.display) {
+    if (display === this.state.display) {
       clearTimeout(oldTimeout);
       privates.set(this, {timeout: null});
       return;
@@ -101,10 +98,10 @@ class OverlayTrigger extends mixin(React.Component).with(Scrim) {
 
     const delay = this.getDelay(display);
 
-    if(oldTimeout && delay) return;
+    if (oldTimeout && delay) return;
 
     let timeout;
-    if(delay) {
+    if (delay) {
       timeout = setTimeout(() => {
         privates.set(this, {timeout: null});
         this.setState({display});
@@ -122,13 +119,9 @@ class OverlayTrigger extends mixin(React.Component).with(Scrim) {
     userCallback && userCallback(...args);
   };
 
-  show = () => {
-    this.setDisplay(true);
-  };
+  show = () => this.setDisplay(true);
 
-  hide = () => {
-    this.setDisplay(false);
-  };
+  hide = () => this.setDisplay(false);
 
   render() {
     let {children, overlay, pin, placement, trigger, ...props} = this.props;
@@ -164,14 +157,10 @@ class OverlayTrigger extends mixin(React.Component).with(Scrim) {
       ...props
     };
 
-    return (
-      <TetherComponent
-        {...tetherProps}
-      >
-        {children}
-        {display && overlay}
-      </TetherComponent>
-    );
+    return <TetherComponent {...tetherProps} >
+      {children}
+      {display && overlay}
+    </TetherComponent>;
   }
 }
 
