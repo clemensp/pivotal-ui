@@ -12,6 +12,17 @@ categories:
 npm install pui-react-media --save
 </code>
 
+## Props
+
+Property     | Options                                        | Description
+------------------- | ---------------------------------------------- | --------------------------------------------------------------------------
+`placement`         | "left" (default), "right"                      | Horizontal placement of the media
+`vAlign`            | top (default), "middle", "bottom"              | Vertical alignment of the body (used for large images with small content next to it, usually centered)
+`stackSize`         | "xsmall", "small", "medium", "large"           | At what breakpoint should the media object stack
+`mediaSpacing`      | "small", "medium", "large", "xlarge"           | Amount of whitespace between media and body
+
+## Basic usage
+
 Import the subcomponents:
 
 ```
@@ -22,15 +33,6 @@ import {Image} from 'pui-react-images';
 ```
 
 A Flag is a special type of media that is vAlign='middle'.
-
-## General media object modifiers
-
-Media Modifiers     | Options                                        | Description
-------------------- | ---------------------------------------------- | --------------------------------------------------------------------------
-`placement`         | "left" (default), "right"                      | Horizontal placement of the media
-`vAlign`            | top (default), "middle", "bottom"              | Vertical alignment of the body (used for large images with small content next to it, usually centered)
-`stackSize`         | "xsmall", "small", "medium", "large"           | At what breakpoint should the media object stack
-`mediaSpacing`      | "small", "medium", "large", "xlarge"           | Amount of whitespace between media and body
 
 The images or other media can be aligned top, middle, or bottom. The default is top aligned.
 
@@ -53,14 +55,7 @@ const mediaBasicLinkedImage = <Image src="http://placehold.it/50x50" href="http:
 </Media>
 ```
 
-*/
-
-/*doc
----
-title: Vertical Alignment
-name: media_alignment_react
-parent: media_react
----
+## Vertical Alignment
 
 ```jsx_example
 const mediaAlignmentImage = <Image href="http://www.google.com" src="http://placehold.it/50x50" alt="A sample media object"/>;
@@ -99,14 +94,8 @@ const mediaAlignmentImage = <Image href="http://www.google.com" src="http://plac
   </Media>
 </div>
 ```
-*/
 
-/*doc
----
-title: Spacing
-name: media_spacing_react
-parent: media_react
----
+## Spacing
 
 Media spacing can be added to the left and right medias. If no spacing is defined, it defaults to large.
 

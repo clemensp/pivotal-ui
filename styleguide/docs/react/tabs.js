@@ -12,18 +12,9 @@ categories:
 npm install pui-react-tabs --save
 </code>
 
-Import the subcomponents:
+## Props
 
-```
-import {Tabs, Tab, LeftTabs} from 'pui-react-tabs';
-```
-
-Using Tab components in React consists of a parent element for the desired Tab type (for example,
-`Tabs` or `LeftTabs`). Each `Tab` is a child of this and has a `tab` property for the
-string value a Tab should display. Additionally, each `Tab` must define an `eventKey` property
-for uniquely identifying this tab to its parent component.
-
-##Tabs Properties
+Tabs
 
 Property   | Required? | Type             | Description
 -----------| ----------|------------------| --------------------------------------------------------------------------
@@ -36,7 +27,8 @@ Property   | Required? | Type             | Description
 `smallScreenClassName` | no  | String | Will be applied to small screen tabs only
 `tabType` | no | one of: `"simple"`, `"simple-alt"` | Change the styling of your tabs, mostly whether the selected tab is transparent
 
-##Tab Properties
+Tab
+
 Property   | Required? | Type             | Description
 -----------| ----------|------------------| --------------------------------------------------------------------------
 `aria-labelledby` | no | String | overwrite the default `aria-labelledby` for the tab for more specific accessibility information
@@ -48,14 +40,20 @@ Property   | Required? | Type             | Description
 `title` | yes | Node | Text or an element rendered in the tab link
 `tabClassName` | no | String | className to add to the tab link
 
-*/
+## Basic usage
 
-/*doc
----
-title: Tabs
-name: 01_tabs_react
-parent: tabs_react
----
+Import the subcomponents:
+
+```
+import {Tabs, Tab, LeftTabs} from 'pui-react-tabs';
+```
+
+Using Tab components in React consists of a parent element for the desired Tab type (for example,
+`Tabs` or `LeftTabs`). Each `Tab` is a child of this and has a `tab` property for the
+string value a Tab should display. Additionally, each `Tab` must define an `eventKey` property
+for uniquely identifying this tab to its parent component.
+
+## Tabs
 
 ```react_example
 <Tabs defaultActiveKey={1} actions={<a>Action!</a>}>
@@ -66,14 +64,8 @@ parent: tabs_react
   </Tab>
 </Tabs>
 ```
-*/
 
-/*doc
----
-title: Alt
-name: 02_alt_tabs_react
-parent: tabs_react
----
+## Alt
 
 ```react_example
 <Tabs tabType="simple-alt" defaultActiveKey={2}>
@@ -84,14 +76,8 @@ parent: tabs_react
   </Tab>
 </Tabs>
 ```
-*/
 
-/*doc
----
-title: Left
-name: 03_left_tabs_react
-parent: tabs_react
----
+## Left
 
 `LeftTabs` can be used to create tabs where the nav is stacked on the left. They
 take a few optional special properties in addition to the properties in Tabs.
@@ -110,14 +96,8 @@ Property   | Required? | Type             | Description                         
   </Tab>
 </LeftTabs>
 ```
-*/
 
-/*doc
----
-title: Responsive Breakpoints
-name: 04_responsive_tabs_react
-parent: tabs_react
----
+## Responsive Breakpoints
 
 Tabs can be responsive, and will display accordion-style on small screens and folder-style on large
 screens.

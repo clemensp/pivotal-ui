@@ -12,6 +12,12 @@ categories:
 npm install pui-react-panes --save
 </code>
 
+## Props
+
+TODO
+
+## Basic usage
+
 Import the subcomponents:
 
 ```

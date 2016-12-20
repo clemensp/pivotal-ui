@@ -18,6 +18,12 @@ If you use those props, you will need to add an svg loader:
 npm install babel-loader svg-react-loader --save-dev
 </code>
 
+## Props
+
+TODO
+
+## Basic usage
+
 Import the subcomponent:
 
 ```

@@ -10,6 +10,12 @@ parent: form_react
   npm install pui-react-toggle --save
 </code>
 
+## Props
+
+TODO
+
+## Basic usage
+
 Import the subcomponent:
 
 ```

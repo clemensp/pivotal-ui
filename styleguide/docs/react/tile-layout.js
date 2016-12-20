@@ -12,6 +12,12 @@ categories:
 npm install pui-react-tile-layout pui-react-panels --save
 </code>
 
+## Props
+
+TODO
+
+## Basic usage
+
 Import the subcomponents:
 
 ```
@@ -37,14 +43,8 @@ import {ClickableAltPanel} from 'pui-react-panels';
   </TileLayoutItem>
 </TileLayout>
 ```
-*/
 
-/*doc
----
-title: Responsive Breakpoints
-name: 01_tile_layout_responsive
-parent: tile_layout_react
----
+## Responsive Breakpoints
 
 You can also pass an object setting the number of columns for responsive
 breakpoints to the columns prop. You can set separate column values
@@ -67,14 +67,7 @@ breakpoints to the columns prop. You can set separate column values
 </TileLayout>
 ```
 
-*/
-
-/*doc
----
-title: Gutters
-name: 02_tile_layout_gutters
-parent: tile_layout_react
----
+## Gutters
 
 You can make a TileLayout without gutters by passing noGutter as a prop.
 

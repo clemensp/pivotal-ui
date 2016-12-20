@@ -17,14 +17,7 @@ npm install babel-loader svg-react-loader --save-dev
 
 (The extra loaders are for the [Iconography](/react_base_iconography.html) component.)
 
-Import the subcomponents:
-
-```
-import {Table, TableHeader, TableRow, TableCell} from 'pui-react-table';
-```
-
-The `Table` component is a robust component that offers a styled table with fully
-functioning sort. If the rows change, the content on the page will update.
+## Props
 
 The `Table` expects the following properties:
 
@@ -45,6 +38,17 @@ Property     | Required? | Type             | Description
 `headerProps`| **no**    | Object           | React props that will be passed through to that column
 `sortable`   | **no**    | Boolean          | Is this column sortable? Defaults to false
 `sortBy`     | **no**    | Function         | Function to transform data before sorting
+
+## Basic usage
+
+Import the subcomponents:
+
+```
+import {Table, TableHeader, TableRow, TableCell} from 'pui-react-table';
+```
+
+The `Table` component is a robust component that offers a styled table with fully
+functioning sort. If the rows change, the content on the page will update.
 
 
 ```jsx_example

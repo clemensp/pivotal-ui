@@ -1,18 +1,7 @@
 /*doc
 ---
-title: Forms
-name: form_react
-categories:
- - react_components_forms
- - react_all
----
-*/
-
-
-/*doc
----
-title: Radio Inputs
-name: 02_form_radio_input_react
+title: Radio
+name: 00_form_radio_react
 parent: form_react
 ---
 
@@ -20,6 +9,12 @@ parent: form_react
 <img src="/styleguide/download.svg" width="16" height="16"/>
 npm install pui-react-radio --save
 </code>
+
+## Props
+
+TODO
+
+## Basic usage
 
 For the example, you also need to install [Grids](#grid_react) and require `Col` from it.
 

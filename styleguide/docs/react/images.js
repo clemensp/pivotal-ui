@@ -12,6 +12,12 @@ categories:
 npm install pui-react-images --save
 </code>
 
+## Props
+
+TODO
+
+## Basic usage
+
 Import the subcomponent:
 
 ```

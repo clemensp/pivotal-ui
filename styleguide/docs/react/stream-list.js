@@ -10,6 +10,12 @@ parent: list_react
 npm install pui-react-lists pui-react-stream-list pui-react-buttons --save
 </code>
 
+## Props
+
+TODO
+
+## Basic usage
+
 Import the subcomponents:
 
 ```js

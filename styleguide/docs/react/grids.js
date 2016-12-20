@@ -12,21 +12,16 @@ categories:
 npm install pui-react-grids --save
 </code>
 
-Import the subcomponents:
+## Props
 
-```
-import {Row, Col} from 'pui-react-grids';
-```
-
-## Row Properties
+Row properties:
 
 Property           |  Type         | Description
 -------------      | --------------| --------------------------------------------------------------------------
 `componentClass`       | String or Component class  | The component to render the row. Defaults to "div"
 `gutter` | one of: `"sm"`, `"md"`, `"lg"` | sets the size of the gutter. Defaults to "lg"
 
-
-## Col Properties
+Col Properties
 
 Property           |  Type         | Description
 -------------      | --------------| --------------------------------------------------------------------------
@@ -37,14 +32,15 @@ Property           |  Type         | Description
 `xsPush`, `smPush`, `mdPush`, `lgPush` | Number | Offset to change the order of grid columns to the right with
 `xsPull`, `smPull`, `mdPull`, `lgPull` | Number | Offset to change the order of grid columns to the left with
 
-*/
+## Basic usage
 
-/*doc
----
-title: Examples
-name: 04_grid_examples_react
-parent: grid_react
----
+Import the subcomponents:
+
+```
+import {Row, Col} from 'pui-react-grids';
+```
+
+## Examples
 
 ```react_example
 <div>
@@ -79,15 +75,10 @@ parent: grid_react
     <Col md={12}></Col>
   </Row>
 </div>
- ```
- */
+```
 
-/*doc
----
-title: "Example: Mobile and Desktop"
-name: 04_a_grid_mobile_and_desktop_react
-parent: 04_grid_examples_react
----
+## Example: Mobile and Desktop
+
 Don't want your columns to simply stack in smaller devices?
 Use the extra small and medium device grid classes by adding `.col-xs-*` `.col-md-*` to your columns.
 See the example below for a better idea of how it all works.
@@ -109,14 +100,8 @@ See the example below for a better idea of how it all works.
   </Row>
 </div>
 ```
-*/
 
-/*doc
----
-title: Gutter Sizes
-name: 04_grid_gutter_sizes_react
-parent: grid_react
----
+## Gutter Sizes
 
 ```react_example
 <div>
