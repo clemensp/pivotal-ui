@@ -1,12 +1,12 @@
-const ClipboardHelper = {
-  select(window, document, element) {
+export const ClipboardHelper = {
+  select: (window, document, element) => {
     window.getSelection().removeAllRanges();
     const range = document.createRange();
     range.selectNode(element);
     window.getSelection().addRange(range);
   },
 
-  copy(window, document, element) {
+  copy: (window, document, element) => {
     ClipboardHelper.select(window, document, element);
     try {
       document.execCommand('copy');
@@ -15,6 +15,4 @@ const ClipboardHelper = {
       window.getSelection().removeAllRanges();
     }
   }
-};
-
-module.exports = ClipboardHelper;
+}

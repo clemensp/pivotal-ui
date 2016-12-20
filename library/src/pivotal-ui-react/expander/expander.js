@@ -1,17 +1,15 @@
-const React = require('react');
+import React from 'react';
 import {Collapsible} from 'pui-react-collapsible';
 
-class ExpanderTrigger extends React.Component {
+export class ExpanderTrigger extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {};
   }
 
-  setTarget = (target) => {
-    this.setState({target});
-  };
+  setTarget = target => this.setState({target});
 
-  toggleExpander = (event) => {
+  toggleExpander = event => {
     event.preventDefault();
     if (this.state.target) {
       this.state.target.toggle();
@@ -25,7 +23,7 @@ class ExpanderTrigger extends React.Component {
   }
 }
 
-class ExpanderContent extends React.Component {
+export class ExpanderContent extends React.Component {
   static propTypes = {
     expanded: React.PropTypes.bool
   };
@@ -41,16 +39,10 @@ class ExpanderContent extends React.Component {
     }
   }
 
-  toggle() {
-    this.setState({expanded: !this.state.expanded});
-  }
+  toggle = () => this.setState({expanded: !this.state.expanded});
 
   render() {
     const {expanded} = this.state;
-    return (
-      <Collapsible {...{...this.props, expanded}}/>
-    );
+    return <Collapsible {...{...this.props, expanded}}/>;
   }
 }
-
-module.exports = {ExpanderTrigger, ExpanderContent};

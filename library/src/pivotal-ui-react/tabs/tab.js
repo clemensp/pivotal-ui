@@ -1,7 +1,8 @@
-const React = require('react');
+import React from 'react';
+
 const types = React.PropTypes;
 
-class Tab extends React.Component {
+export class Tab extends React.Component {
   static propTypes = {
     'aria-labelledby': types.string,
     className: types.string,
@@ -22,5 +23,3 @@ class Tab extends React.Component {
     return null;
   }
 }
-
-module.exports = Tab;

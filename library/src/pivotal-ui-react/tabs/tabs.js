@@ -1,20 +1,20 @@
-const Animation = require('pui-react-mixins/mixins/animation_mixin');
-const {LargeTabs} = require('./large_tabs');
-const mixin = require('pui-react-mixins');
-const Tab = require('./tab');
-const MediaSize = require('./media-size');
-const {SmallTabs} = require('./small_tabs');
-require('pui-css-tabs');
-const React = require('react');
-const uniqueid = require('lodash.uniqueid');
+import React from 'react';
+import Animation from 'pui-react-mixins/mixins/animation_mixin';
+import {LargeTabs} from './large_tabs';
+import mixin from 'pui-react-mixins';
+export Tab from './tab';
+import MediaSize from './media-size';
+import {SmallTabs} from './small_tabs';
+import uniqueid from 'lodash.uniqueid';
+import 'pui-css-tabs';
 
 const types = React.PropTypes;
 
 const privates = new WeakMap();
 
-function triggerEnteredAndExitedCallbacks(childArray, {enteredKey, exitedKey}) {
+const triggerEnteredAndExitedCallbacks = (childArray, {enteredKey, exitedKey}) => {
   childArray.forEach(({props: {eventKey, onEntered, onExited}}) => {
-    if(eventKey === enteredKey) {
+    if (eventKey === enteredKey) {
       onEntered(eventKey);
     } else if (eventKey === exitedKey) {
       onExited(eventKey);
@@ -22,7 +22,7 @@ function triggerEnteredAndExitedCallbacks(childArray, {enteredKey, exitedKey}) {
   });
 }
 
-class Tabs extends mixin(React.Component).with(Animation) {
+export class Tabs extends mixin(React.Component).with(Animation) {
   constructor(props, context) {
     super(props, context);
 
@@ -77,12 +77,13 @@ class Tabs extends mixin(React.Component).with(Animation) {
     window.removeEventListener('resize', this.checkScreenSize);
   }
 
-  setActiveKey(key) {
+  setActiveKey = key => {
     const previousActiveKey = this.state.activeKey;
     this.setState({
       activeKey: key,
       previousActiveKey
     });
+
     if (key !== previousActiveKey) {
       this.animate('transitionProgress', 0);
       privates.set(this, 0);
@@ -97,7 +98,7 @@ class Tabs extends mixin(React.Component).with(Animation) {
     }
   };
 
-  updateTransitionProgressAndTriggerCallbacks = (childArray) => {
+  updateTransitionProgressAndTriggerCallbacks = childArray => {
     const {animation} = this.props;
     const oldTransitionProgress = privates.get(this);
     const transitionProgress = this.animate('transitionProgress', 1, animation ? Tabs.ANIMATION_TIME : 0);
@@ -108,7 +109,7 @@ class Tabs extends mixin(React.Component).with(Animation) {
   };
 
   triggerTransitionCallbacks = ({childArray, oldTransitionProgress, transitionProgress}) => {
-    if(oldTransitionProgress < 1 && transitionProgress === 1) {
+    if (oldTransitionProgress < 1 && transitionProgress === 1) {
       const exitedKey = this.state.previousActiveKey;
       const enteredKey = this.state.activeKey;
       triggerEnteredAndExitedCallbacks(childArray, {enteredKey, exitedKey});
@@ -149,18 +150,18 @@ class Tabs extends mixin(React.Component).with(Animation) {
       id = this.state.id,
       responsiveBreakpoint: __ignore4,
       smallScreenClassName: __ignore5,
-      ...props} = this.props;
-      const {activeKey, previousActiveKey} = this.state;
+      ...props
+    } = this.props;
+    const {activeKey, previousActiveKey} = this.state;
 
-    return (
-      <LargeTabs
-        {...{...props, childArray, activeKey, previousActiveKey, id,
-          handleClick: this.handleClick, transitionProgress}}/>
-    );
+    return <LargeTabs {...{
+      ...props, childArray, activeKey, previousActiveKey, id,
+      handleClick: this.handleClick, transitionProgress
+    }}/>;
   }
 }
 
-class LeftTabs extends React.Component {
+export class LeftTabs extends React.Component {
   static propTypes = {
     position: types.oneOf(['top', 'left']),
     tabWidth: types.number,
@@ -178,14 +179,6 @@ class LeftTabs extends React.Component {
     if (!paneWidth) {
       paneWidth = 24 - tabWidth;
     }
-    return (
-      <Tabs {...props} tabWidth={tabWidth} paneWidth={paneWidth}/>
-    );
+    return <Tabs {...props} tabWidth={tabWidth} paneWidth={paneWidth}/>;
   }
 }
-
-module.exports = {
-  Tabs,
-  Tab,
-  LeftTabs
-};

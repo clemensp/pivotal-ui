@@ -1,8 +1,9 @@
-const React = require('react');
-const types = React.PropTypes;
-const classnames = require('classnames');
+import React from 'react';
+import classnames from 'classnames';
 import {mergeProps} from 'pui-react-helpers';
-require('pui-css-panels');
+import 'pui-css-panels';
+
+const types = React.PropTypes;
 
 const paddingTypes = [];
 ['p', 'm'].forEach(type => {
@@ -13,7 +14,7 @@ const paddingTypes = [];
   });
 });
 
-class PanelTitle extends React.Component {
+export class PanelTitle extends React.Component {
   static propTypes = {
     className: types.string
   };
@@ -47,12 +48,10 @@ class PanelHeader extends React.Component {
 
       const actionsNode = actions ? <div className="panel-actions">{actions}</div> : null;
 
-      return (
-        <div className="panel-header">
-          {headerNode}
-          {actionsNode}
-        </div>
-      );
+      return <div className="panel-header">
+        {headerNode}
+        {actionsNode}
+      </div>;
     } else {
       return null;
     }
@@ -68,25 +67,23 @@ class PanelFooter extends React.Component {
     const {footer} = this.props;
 
     if (footer) {
-      return (
-        <div className="panel-footer">
-          {footer}
-        </div>
-      );
+      return <div className="panel-footer">
+        {footer}
+      </div>;
     } else {
       return null;
     }
   }
 }
 
-class Panel extends React.Component {
+export class Panel extends React.Component {
   static propTypes = {
     header: types.node,
     footer: types.node,
     actions: types.node,
     subtitle: types.node,
     innerClassName: types.string,
-    padding: function(props, propName, componentName) {
+    padding: (props, propName, componentName) => {
       if (props.padding && !props.padding.split(' ').every(pad => paddingTypes.indexOf(pad) >= 0)) {
         return new Error(`Invalid padding type used in ${componentName}`);
       }
@@ -109,17 +106,15 @@ class Panel extends React.Component {
       style: scrollableStyle
     };
 
-    return (
-      <div {...props}>
-        <PanelHeader {...{actions, header, subtitle}}/>
-        <div {...bodyProps}>{children}</div>
-        <PanelFooter footer={footer}/>
-      </div>
-    );
+    return <div {...props}>
+      <PanelHeader {...{actions, header, subtitle}}/>
+      <div {...bodyProps}>{children}</div>
+      <PanelFooter footer={footer}/>
+    </div>;
   }
 }
 
-class ShadowPanel extends Panel {
+export class ShadowPanel extends Panel {
   constructor(props) {
     super(props);
     this.kind = `panel-shadow-${props.shadowLevel}`;
@@ -135,39 +130,26 @@ class ShadowPanel extends Panel {
   };
 }
 
-class SimplePanel extends Panel {
+export class SimplePanel extends Panel {
   kind = 'panel-simple';
 }
 
-class BasicPanel extends Panel {
+export class BasicPanel extends Panel {
   kind = 'panel-basic';
 }
 
-class BasicPanelAlt extends Panel {
+export class BasicPanelAlt extends Panel {
   kind = 'panel-basic-alt';
 }
 
-class ClickablePanel extends Panel {
+export class ClickablePanel extends Panel {
   kind = 'panel-clickable';
 }
 
-
-class ClickableAltPanel extends Panel {
+export class ClickableAltPanel extends Panel {
   kind = 'panel-clickable-alt';
 }
 
-class HighlightPanel extends Panel {
+export class HighlightPanel extends Panel {
   kind = 'panel-highlight';
 }
-
-module.exports = {
-  Panel,
-  SimplePanel,
-  BasicPanel,
-  BasicPanelAlt,
-  ClickablePanel,
-  ClickableAltPanel,
-  HighlightPanel,
-  ShadowPanel,
-  PanelTitle
-};

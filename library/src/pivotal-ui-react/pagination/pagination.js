@@ -1,7 +1,8 @@
-var React = require('react');
+import React from 'react';
 import {mergeProps} from 'pui-react-helpers';
+import 'pui-css-pagination';
+
 const types = React.PropTypes;
-require('pui-css-pagination');
 
 class PaginationButton extends React.Component {
   static propTypes = {
@@ -11,7 +12,7 @@ class PaginationButton extends React.Component {
     eventKey: types.oneOfType([types.number, types.string])
   };
 
-  click = (e) => {
+  click = e => {
     const {eventKey, onSelect} = this.props;
     onSelect && onSelect(e, {eventKey});
   };
@@ -19,17 +20,15 @@ class PaginationButton extends React.Component {
   render() {
     const {content, active} = this.props;
     const activeClass = active ? 'active' : '';
-    return (
-      <li onClick={this.click} className={activeClass}>
-        <a>
-          {content}
-        </a>
-      </li>
-    );
+    return <li onClick={this.click} className={activeClass}>
+      <a>
+        {content}
+      </a>
+    </li>;
   }
 }
 
-class Pagination extends React.Component {
+export class Pagination extends React.Component {
   static propTypes = {
     items: types.number,
     next: types.bool,
@@ -41,35 +40,30 @@ class Pagination extends React.Component {
   static defaultProps = {
     next: true,
     prev: true,
-    onSelect: () => {}
+    onSelect: () => {
+    }
   };
 
   render() {
     const {items, next, prev, activePage, onSelect, ...props} = this.props;
     const paginationButtons = [...Array(items)].map((_, index) => {
       const isActive = (index + 1 === activePage);
-      return (
-        <PaginationButton
-          key={index}
-          content={index + 1}
-          active={isActive}
-          onSelect={onSelect}
-          eventKey={index + 1}
-          {...props}/>
-      );
+      return <PaginationButton
+        key={index}
+        content={index + 1}
+        active={isActive}
+        onSelect={onSelect}
+        eventKey={index + 1}
+        {...props}/>;
     });
 
     const prevButton = <PaginationButton onSelect={onSelect} eventKey='prev' content="&lsaquo;"/>;
     const nextButton = <PaginationButton onSelect={onSelect} eventKey='next' content="&rsaquo;"/>;
 
-    return (
-      <ul className='pagination'>
-        {prev ? prevButton : null}
-        {paginationButtons}
-        {next ? nextButton : null}
-      </ul>
-    );
+    return <ul className='pagination'>
+      {prev ? prevButton : null}
+      {paginationButtons}
+      {next ? nextButton : null}
+    </ul>;
   }
 }
-
-module.exports = {Pagination};
